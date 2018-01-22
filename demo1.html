@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>counter计数器</title>
+	<style type="text/css">
+		.c1,.c2,.c3,.c4,.c5,.c6{
+			border-radius:5px;
+			display: inline-block;
+			width:15%;
+			margin:10px 0;
+			text-align: center;
+			color:white;
+			height:40px;
+			line-height: 40px;
+		}
+		.c1{background: red;}
+		.c2{background: blue;}
+		.c3{background: yellow;}
+		.c4{background: black;}
+		.c5{background: green;}
+		.c6{background: pink;}
+        
+	</style>
+</head>
+<body>
+   <h2>请选择您最喜欢的颜色，按喜欢程度从高到弱选择，最多三个</h2>
+   <div id="colors">
+   	<span class="c1">红色</span>
+   	<span class="c2">蓝色</span>
+   	<span class="c3">黄色</span>
+   	<span class="c4">黑色</span>
+   	<span class="c5">绿色</span>
+   	<span class="c6">粉色</span>
+
+   </div>
+   <h3>喜欢颜色：</h3>
+   <div id="show"></div>
+   <span>共选择了<span class="dage"></span>种颜色</span>
+</body>
+<script type="text/javascript">
+	var colors = document.getElementById('colors');
+	var show = document.getElementById('show');
+	var show_child = show.getElementsByTagName('span');
+	var dage = document.getElementsByClassName('dage');
+	var sum = 0;
+	//添加时间的函数
+	function bindEvent(elem,type,fn){
+		elem.addEventListener(type,fn);
+	}
+	//给指定位置添加所选颜色
+	function creat(childs,parent,class1){
+		var child = document.createElement(childs);
+		child.className = class1;
+		parent.appendChild(child);
+
+	}
+
+	//给所选元素添加时间代理，显示所选元素
+    bindEvent(colors,'click',function(e){
+        var target= e.target;//找到设置事件节点下的点击元素
+        
+        if (target.nodeName === 'SPAN') {
+        	var class1 = target.className;
+        	
+
+        	   //判断所选颜色的个数
+        		if(show_child.length > 2)
+				{
+					alert('超过所选个数');
+				}else{
+
+					creat(target.nodeName,show,class1);
+                    sum++;
+                    dage[0].innerHTML = sum;
+
+				}
+        	
+        }
+    });
+</script>
+</html>
