@@ -43,11 +43,11 @@
 	var show_child = show.getElementsByTagName('span');
 	var dage = document.getElementsByClassName('dage');
 	var sum = 0;
-	//添加时间的函数
+	//添加事件的函数
 	function bindEvent(elem,type,fn){
 		elem.addEventListener(type,fn);
 	}
-	//给指定位置添加所选颜色
+	//创建元素并添加类名插入到指定父类
 	function creat(childs,parent,class1){
 		var child = document.createElement(childs);
 		child.className = class1;
@@ -55,7 +55,7 @@
 
 	}
 
-	//给所选元素添加时间代理，显示所选元素
+	//给所点击元素添加事件代理，显示所选元素
     bindEvent(colors,'click',function(e){
         var target= e.target;//找到设置事件节点下的点击元素
         
@@ -63,7 +63,7 @@
         	var class1 = target.className;
         	
 
-        	   //判断所选颜色的个数
+        	   //判断所选元素的个数
         		if(show_child.length > 2)
 				{
 					alert('超过所选个数');
