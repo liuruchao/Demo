@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>counter计数器</title>
+	<title>显示点击元素及个数</title>
 	<style type="text/css">
 		.c1,.c2,.c3,.c4,.c5,.c6{
 			border-radius:5px;
@@ -77,5 +77,14 @@
         	
         }
     });
+    //除去点击所选元素
+    bindEvent(show,'click',function(e){
+    	var target = e.target;
+    	if (target.nodeName === 'SPAN') {
+    		show.removeChild(target);
+    		sum--;
+    		dage[0].innerHTML = sum;
+    	}
+    })
 </script>
 </html>
