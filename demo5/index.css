@@ -1,0 +1,82 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  display: block;
+  margin: 2em auto;
+  width: 600px;
+  padding-bottom: 1em;
+  border-bottom: 2px solid black;
+}
+nav ul > li {
+  display: inline-block;
+}
+nav ul a {
+  display: block;
+  width: 100px;
+  line-height: 40px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+}
+nav ul a div {
+  /* 出现的四条线条*/
+  background: #64D455;
+  position: absolute;
+  transform: scale(0);
+  transition: all 1s;
+}
+nav ul a div:first-of-type {
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  transform-origin: center bottom;
+  transition: all 0.25s linear 0;
+}
+nav ul a div:nth-of-type(2) {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform-origin: left center;
+  transition: all 0.25s linear 0.75s;
+}
+nav ul a div:nth-of-type(3) {
+  right: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  transform-origin: center top;
+  transition: all 0.25s linear 0.5s;
+}
+nav ul a div:last-of-type {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform-origin: right center;
+  transition: all 0.25s linear 0.25s;
+}
+nav ul a:hover div {
+  transform: scale(1);
+}
+nav ul a:hover div:first-of-type {
+  transition: all 0.25s linear 0.75s;
+}
+nav ul a:hover div:nth-of-type(2) {
+  transition: all 0.25s linear 0s;
+}
+nav ul a:hover div:nth-of-type(3) {
+  transition: all 0.25s linear 0.25s;
+}
+nav ul a:hover div:nth-of-type(4) {
+  transition: all 0.25s linear 0.5s;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,91 @@
+*{
+	padding:0;
+	margin:0;
+}
+//修改边框颜色
+$color:#64D455;
+//a标签宽高
+$a-width:100px;
+$a-height:40px;
+//每个边框线的位置及宽高
+@mixin key($angle1,$angle2,$width,$height){
+	#{$angle1}:0;
+	#{$angle2}:0;
+	width:$width;
+	height:$height;
+}
+//变形的原点位置
+@mixin  transform-origin($angle1,$angle2){
+	transform-origin:$angle1 $angle2;
+}
+//过渡的经历时间，何时开始，过渡曲线
+@mixin transition($duration,$delay,$function:linear){
+	transition:all $duration $function $delay;
+}
+nav{
+	display:block;
+	margin:2em auto;
+	width:600px;
+	padding-bottom:1em;
+	
+    border-bottom:2px solid black;
+	ul>li{
+		display:inline-block;
+	}
+	ul{
+		a{
+			display:block;
+			width:$a-width;
+			line-height:40px;
+			height:$a-height;
+			text-align:center;
+			text-decoration:none;
+			font-weight:700;
+			position:relative;
+        
+		div{
+			/* 出现的四条线条*/
+           background:$color;
+           position:absolute;
+           transform:scale(0);
+           transition:all 1s;
+		}
+        div:first-of-type{
+        	@include key(left,top,3px,100%);
+        	@include transform-origin(center,bottom);
+        	@include transition(0.25s,0);
+        }
+        div:nth-of-type(2){
+        	@include key(top,left,100%,3px);
+        	@include  transform-origin(left,center);
+        	@include transition(0.25s,0.75s);
+        }
+        div:nth-of-type(3){
+        	@include key(right,top,3px,100%);
+        	@include  transform-origin(center,top);
+        	@include transition(0.25s,0.5s);
+        }
+        div:last-of-type{
+        	@include key(bottom,left,100%,3px);
+        	@include  transform-origin(right,center);
+        	@include transition(0.25s,0.25s);
+        }
+		}
+		a:hover{
+
+           div {transform:scale(1);}
+           div:first-of-type{
+			@include transition(0.25s,0.75s);
+		}
+		  div:nth-of-type(2){
+			@include transition(0.25s,0s);
+		} 
+		 div:nth-of-type(3){
+			@include transition(0.25s,0.25s);
+		}
+		div:nth-of-type(4){
+			@include transition(0.25s,0.5s);
+		}
+		}
+	}
+}
