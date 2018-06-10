@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>仿艺龙特效demo</title>
+	<link rel="stylesheet" href="index.css">
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	
+  <section id="sec">
+  	<div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </section>
+</body>
+<script>
+  $(function(){
+    $("#sec").on("mouseenter","div",function(event){
+            var target = $(event.target);
+            target.css("width","30%");
+            target.siblings().css("width","calc((70%) / 6)");
+            })
+          // .mouseleave(function(){
+          //   $(this).children().css("width","calc(100% / 7");
+          // });
+          .on("mouseleave","div",function(event){
+           var target = $(event.target);
+            target.css("width","calc(100% / 7)");
+            target.siblings().css("width","calc(100% / 7)");
+            
+            });
+   
+  })
+</script>
+</html>
